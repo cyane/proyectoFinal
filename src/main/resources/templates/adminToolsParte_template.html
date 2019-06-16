@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>adminParte</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+	<body>
+	<div >
+		<h1 class="text-center"><strong> PARTES</strong></h1>
+	</div>
+		
+		
+  <div class="d-flex flex-lg-column"  role="group" role="alert">
+		<a class="alert-link btn btn-warning btn-lg rounded-pill border-light shadow-sm p-3 mb-3 font-italic"  href="/adminTools/parte/agregar">Agregar</a>
+		<a class="alert-link btn btn-warning btn-lg rounded-pill border-light shadow-sm p-3 mb-3 font-italic"  href="/adminTools/parte/editar">Editar</a>
+		<a class="alert-link btn btn-warning btn-lg rounded-pill border-light shadow-sm p-3 mb-3 font-italic"  href="/adminTools/parte/borrar">Borrar</a>
+	</div>
+		{{#isAgregar}}
+			{{#opcionesParte}}
+				<a class="alert-link btn btn-info btn-sm rounded border-light shadow-sm p-2 mb-1" href="/adminTools/parte/agregar/{{nombre}}">{{nombre}}</a><br>
+			{{/opcionesParte}}
+		{{/isAgregar}}
+		
+		{{#isEditar}}
+		{{#opcionesRecurso}}
+			<form action="/adminTools/parte/editar/{{idRecurso}}">
+				<input type="hidden" name="idRecursoEspecifico" value="{{recursoEspecifico.idRecursoEspecifico}}">
+				{{#partes}}
+					<select name = "idParte">
+			  			{{#partes}}
+							<option value ="{{idParte}}">{{nombre}}</option>				
+						{{/partes}}
+  					</select>
+				{{/partes}}
+				<button type="submit">guardar</button>
+			</form><br>
+		{{/opcionesRecurso}}
+		{{/isEditar}}
+		
+		{{#isBorrar}}
+			{{#opcionesRecurso}}
+				<form action="/adminTools/parte/borrar/{{idRecurso}}">
+					<input type="hidden" name="idRecursoEspecifico" value="{{recursoEspecifico.idRecursoEspecifico}}">
+					{{#partes}}
+						<select name = "idParte">
+				  			{{#partes}}
+								<option value ="{{idParte}}">{{nombre}}</option>				
+							{{/partes}}
+	  					</select>
+					{{/partes}}
+					<button class="btn btn-success"  type="submit">guardar</button>
+				</form><br>
+			{{/opcionesRecurso}}
+		{{/isBorrar}}
+		
+		{{#mensaje}}
+			<p class="display-4 text-center text-primary font-italic">{{mensaje}}</p>
+		{{/mensaje}}
+	</body>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
